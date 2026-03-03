@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include "func.h"
 
+int global_test =100;
 
 void func()
 {
