@@ -1,8 +1,8 @@
 #include <stdio.h>
 
-int prime(unsigned int n)
+int prime(int n)
 {
-    unsigned int i;
+    int i;
     if( n < 2)
     {
         return 0;

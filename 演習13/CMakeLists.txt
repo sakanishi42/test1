@@ -13,15 +13,10 @@ FetchContent_MakeAvailable(googletest)
 add_compile_options(--coverage)
 add_link_options(--coverage)
 
-#ターゲット作成 
-# テスト対象のCファイルをライブラリ化
-add_library(test_lib STATIC src/test.c)
 
-# テスト実行バイナリの作成
+add_library(test_lib STATIC src/test.c)
 add_executable(test_exe tests/test.cpp)
 
-# リンク設定 (gtest_mainを繋ぐことでmain関数を自動生成)
 target_link_libraries(test_exe test_lib GTest::gtest_main)
 
-# --- 4. テスト有効化 ---
 enable_testing()

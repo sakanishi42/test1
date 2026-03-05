@@ -1,7 +1,7 @@
 #include <stdio.h>
-int prime(unsigned int n)
+int prime(int n)
 {
-    unsigned int i;
+    int i;
     if( n < 2 )
     /*2未満*/
     {
@@ -59,6 +59,7 @@ int data1;
     {
         printf("ZERO\n");
         printf("-------------\n");
+        printf("素数ではない\n");
     }
 
 
