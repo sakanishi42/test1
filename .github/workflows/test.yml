@@ -40,7 +40,7 @@ jobs:
         gcovr -r .. --html-details -o coverage.html
 
     - name: Upload Coverage Report
-      uses: actions/checkout@v4
+      uses: actions/upload-artifact@v4
       with:
         name: coverage-report
         path: "演習13/build/coverage.html"

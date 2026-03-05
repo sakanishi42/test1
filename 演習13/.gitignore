@@ -1,0 +1,12 @@
+# すべての build フォルダを無視
+build/
+演習13/build/
+
+# 実行ファイルや一時ファイルも無視
+*.exe
+*.o
+*.gcda
+*.gcno
+*.html
+CMakeCache.txt
+CMakeFiles/
