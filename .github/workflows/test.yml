@@ -35,7 +35,7 @@ jobs:
       
     - name: Generate Coverage Report
       run: |
-        cd build
+        cd "演習13/build"
         gcovr -r .. --print-summary >> $GITHUB_STEP_SUMMARY
         gcovr -r .. --html-details -o coverage.html
 
