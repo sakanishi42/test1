@@ -19,6 +19,7 @@ jobs:
 
     - name: Configure CMake
       run: |
+        mkdir -p "演習13/build"
         cd "演習13/build"
         cmake ..
 
