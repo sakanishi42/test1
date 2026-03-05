@@ -19,23 +19,23 @@ jobs:
 
     - name: Configure CMake
       run: |
-        mkdir 演習13/build
-        cd 演習13/build
+        mkdir build
+        cd build
         cmake ..
 
     - name: Build
       run: |
-        cd 演習13/build
+        cd build
         make
 
     - name: Run Tests
       run: |
-        cd 演習13/build
+        cd build
         ./test_exe  
       
     - name: Generate Coverage Report
       run: |
-        cd 演習13/build
+        cd build
         gcovr -r .. --print-summary >> $GITHUB_STEP_SUMMARY
         gcovr -r .. --html-details -o coverage.html
 
