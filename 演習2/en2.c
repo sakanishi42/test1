@@ -21,8 +21,7 @@ int prime(int n)
 int main (void)
 {
     
-    unsigned int i = 0;
-int data1;
+    int data1;
     scanf("%d",&data1);
     if(data1 != 0)
     {
@@ -45,7 +44,7 @@ int data1;
             printf("奇数\n");
         }
 
-        if(prime(i))
+        if(prime(data1))
         {
             printf("素数\n");
         }
