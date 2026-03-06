@@ -1,7 +1,8 @@
 #include <stdio.h>
 int main(void)
-{
-    double i;
+{ 
+    double i = 0;
+    printf("円の半径を入力");
     scanf("%lf",&i);
     double en = (i + i) * 3.14;
     double men = i * i * 3.14;

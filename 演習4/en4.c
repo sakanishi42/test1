@@ -1,8 +1,7 @@
 #include <stdio.h>
 int main(void)
 {
-    double data;
-    double sum = 0;
+    double data ,sum = 0;
     int i;
     while(1)
     {
