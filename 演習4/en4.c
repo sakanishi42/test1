@@ -2,9 +2,11 @@
 int main(void)
 {
     double data ,sum = 0;
-    int i;
+    int i = 0;
     while(1)
     {
+        printf("入力された数字の平均値を求め、０で終了します。\n");
+        printf("数字を入力して下さい。\n");
         scanf("%lf",&data);
         if(data == 0)
         {
