@@ -1,7 +1,7 @@
 #include <stdio.h>
 int prime(int n)
 {
-    int i;
+    int i = 0;
     if( n < 2 )
     /*2未満*/
     {
@@ -21,7 +21,7 @@ int prime(int n)
 int main (void)
 {
     
-    int data1;
+    int data1 = 0;
     scanf("%d",&data1);
     if(data1 != 0)
     {
