@@ -3,31 +3,30 @@
 
 int main(void)
 {
-    int i,j,k;
-    i=0;
-    j,k=1;
+    int num1=0;
+    int num2,num3=1;
     while(1)
     {
-        if(i > 1000)
+        if(num1 > 1000)
          {
             break;
          }
          printf("%d　",i);
-         j = i + k;
+         num2 = num1 + num3;
 
-         if(j > 1000)
+         if(num2 > 1000)
          {
             break;
          }
          printf("%d　",j);
-         k = i + j;
+         num3 = num1 + num2;
          
-         if(k > 1000)
+         if(num3 > 1000)
          {
             break;
          }
          printf("%d　",k);
-         i = j + k;
+         num1 = num2 + num3;
     }
 
     return 0;
