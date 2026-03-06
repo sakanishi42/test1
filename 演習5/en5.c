@@ -1,7 +1,7 @@
 #include <stdio.h>
 int main(void)
 {
-    int data;
+    int data = 0;
 
     printf("何段？\n");
     scanf("%d",&data);
