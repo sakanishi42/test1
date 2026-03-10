@@ -3,29 +3,31 @@
 #include <stdlib.h>
 #include <string.h>
 
-int calc(int i,int j,char c)
+int calc(int num1,int num2,char operator)
 {
-    if (c != '*' && c != '/' && c !='+' && c != '-' & strlen(c) > 1) 
+    if (c != '*' && c != '/' && c !='+' && c != '-') 
     {
         printf("正しい計算式を入力して下さい。\n");
         exit(1);
     }
     else
     {
-        switch (c)
+        switch (operator)
         {
         case '*':
-            return i * j;
+            return num1 * num2;
         case '/':
-        /*if(i < j)
+        if (num1 == 0 || num2 == 0)
+        {
             printf("正しい計算式を入力して下さい。\n");
             exit(1);
-        */
-            return i / j;
+        }
+        
+            return num1 / num2;
         case '+':
-            return i + j;
+            return num1 + num2;
         case '-':
-            return i - j;
+            return num1 - num2;
         }
     }
 }
@@ -33,12 +35,12 @@ int calc(int i,int j,char c)
 int main(void)
 {
     int num1,num2,sum;
-    char c1;
+    char operator;
     printf("計算式を入力して下さい。\n");
-    if(scanf("%d %c %d", &num1, &c1, &num2) == 3)
+    if(scanf("%d %c %d", &num1, &operator, &num2) == 3)
     {
-        sum = calc(num1,num2,c1);
-        printf("%d %c %d = %d\n",num1,c1,num2,sum);
+        sum = calc(num1,num2,operator);
+        printf("%d %c %d = %d\n",num1,operator,num2,sum);
     }
     else
     {
