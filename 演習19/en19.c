@@ -31,7 +31,7 @@ void* work(void* arg) {
         printf("\nスレッド%d 動作中\n", my_id);
         pthread_mutex_unlock(&mutex);
 
-        sleep(1);
+        active_id = 0;
     }
     return 0;
 }
@@ -46,7 +46,7 @@ int main() {
     printf("コマンドを入力してください:\n");
     printf("1: スレッド1 を動かす\n2: スレッド2 を動かす\nq: 終了\n");
 
-    char cmd;
+    char cmd = '\0';
     while (1) 
     {
         scanf(" %c", &cmd); 
@@ -65,7 +65,7 @@ int main() {
         else if (cmd == 'q')
         {
             exit_flag = 1;
-            printf("スレッド%d を終了しました\n", active_id);
+            printf("プログラムを終了します\n");
             pthread_cond_broadcast(&cond); 
             pthread_mutex_unlock(&mutex);
             break;
@@ -78,6 +78,5 @@ int main() {
     pthread_join(th1, NULL);
     pthread_join(th2, NULL);
 
-    printf("プログラムを終了します\n");
     return 0;
 }
