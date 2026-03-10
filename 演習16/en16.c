@@ -5,7 +5,7 @@
 
 int calc(int num1,int num2,char operator)
 {
-    if (c != '*' && c != '/' && c !='+' && c != '-') 
+    if (operator != '*' && operator != '/' && operator !='+' && operator != '-') 
     {
         printf("正しい計算式を入力して下さい。\n");
         exit(1);
@@ -34,8 +34,8 @@ int calc(int num1,int num2,char operator)
 
 int main(void)
 {
-    int num1,num2,sum;
-    char operator;
+    int num1,num2,sum = 0;
+    char operator = '\0';
     printf("計算式を入力して下さい。\n");
     if(scanf("%d %c %d", &num1, &operator, &num2) == 3)
     {
