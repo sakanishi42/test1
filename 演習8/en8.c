@@ -2,7 +2,7 @@
 
 int prime(int n)
 {
-    int i;
+    int i = 0;
     if( n < 2)
     {
         return 0;
@@ -66,7 +66,7 @@ void isPrime(int i)
 
 int main(void)
 {
-    int num;
+    int num = 0;
     scanf("%d",&num);
     if(isZero(num))
     {
