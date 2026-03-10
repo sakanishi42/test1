@@ -10,10 +10,12 @@ int active_id = 0;
 int exit_flag = 0;        
 
 
-void* work(void* arg) {
+void* work(void* arg) 
+{
     int my_id = *(int*)arg;
 
-    while (1) {
+    while (1) 
+    {
         pthread_mutex_lock(&mutex);
 
         
@@ -36,7 +38,8 @@ void* work(void* arg) {
     return 0;
 }
 
-int main() {
+int main(void) 
+{
     pthread_t th1, th2;
     int id1 = 1, id2 = 2;
 
