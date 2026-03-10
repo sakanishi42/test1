@@ -1,10 +1,14 @@
 #include <stdio.h>
 #include <pthread.h>
 
-void *th_sum(void *arg) {
+pthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER;
+
+void *th_sum(void *arg) 
+{
+    pthread_mutex_lock(&mutex);
     int* num2 = (int*)arg;
     *num2 = *num2 + 1;
-    pthread_exit((void *)num2);
+    pthread_mutex_unlock(&mutex);
     return 0;
 }
 
@@ -12,15 +16,15 @@ int main(void)
 {
     pthread_t th;
     int num1 = 3;
-    void* th_result = NULL;
 
-    printf("変更前の変数＞%d\n",num1);
+    printf("変更前の変数＞%d\n", num1);
 
-    pthread_create(&th, NULL, th_sum, (void*)&num1) ;
-    pthread_join(th, &th_result);
+    pthread_create(&th, NULL, th_sum, (void*)&num1);
+    pthread_join(th, NULL);
 
-    int* result = (int*)th_result;
+    printf("変更後の変数＞%d\n", num1);
 
-    printf("変更後の変数＞%d\n",*result);  
+    pthread_mutex_destroy(&mutex);
+
     return 0;
 }
