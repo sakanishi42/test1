@@ -9,7 +9,7 @@ pthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER;
 pthread_cond_t cond = PTHREAD_COND_INITIALIZER;
 
 
-char callback(char ch) 
+void callback(char ch) 
 {
     pthread_mutex_lock(&mutex);
     data_flag = 1;
@@ -31,6 +31,10 @@ void* key_watch(void *arg)
         if (on_input != NULL) 
         {
             on_input(temp);
+            if(temp == 'q')
+            {
+                break;
+            }
         }    
     }
     return NULL;
@@ -60,7 +64,6 @@ int main(void)
         pthread_mutex_unlock(&mutex);
     }
 
-    pthread_cancel(th); 
     pthread_join(th, NULL);
     printf("プログラムを終了します。\n");
 
