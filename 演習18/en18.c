@@ -1,41 +1,37 @@
 #include <stdio.h>
 #include <pthread.h>
 
+typedef void (*input_key)(char);
 char input_ch = '\0';
-int data_flag = 0;    
-int exit_flag = 0;    
+int data_flag = 0;      
 
 pthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER;
 pthread_cond_t cond = PTHREAD_COND_INITIALIZER;
 
 
-void callback() 
+char callback(char ch) 
 {
+    pthread_mutex_lock(&mutex);
     data_flag = 1;
+    input_ch = ch;
     pthread_cond_signal(&cond);
+    pthread_mutex_unlock(&mutex);
 }
 
 
 void* key_watch(void *arg)
 {
+    input_key on_input = (input_key)arg;
     char temp = '\0';
     printf("文字を入力してください (qで終了)\n");
 
     while (1) 
     {
         if (scanf(" %c", &temp) != 1) continue;
-        pthread_mutex_lock(&mutex);
-        input_ch = temp;
-        
-        if (input_ch == 'q')
+        if (on_input != NULL) 
         {
-            exit_flag = 1;
-            pthread_cond_signal(&cond); 
-            pthread_mutex_unlock(&mutex);
-            break;
-        }
-        callback();
-        pthread_mutex_unlock(&mutex);
+            on_input(temp);
+        }    
     }
     return NULL;
 }
@@ -43,29 +39,28 @@ void* key_watch(void *arg)
 int main(void) 
 {
     pthread_t th;
-    pthread_create(&th, NULL, key_watch, NULL); 
+    pthread_create(&th, NULL, key_watch, (void *)callback); 
 
     while (1) 
     {
         pthread_mutex_lock(&mutex);
 
-        while (data_flag == 0 && exit_flag == 0)
+        while (data_flag == 0)
         {
             pthread_cond_wait(&cond, &mutex);
         }
-        if (exit_flag == 1)
+        printf("受信した文字：%c\n",input_ch);
+        data_flag = 0;
+        
+        if (input_ch == 'q')
         {
             pthread_mutex_unlock(&mutex);
             break;
         }
-        if (data_flag != 0) 
-        {
-            printf("受信した文字：%c\n",input_ch);
-        }
-        data_flag = 0;
         pthread_mutex_unlock(&mutex);
     }
 
+    pthread_cancel(th); 
     pthread_join(th, NULL);
     printf("プログラムを終了します。\n");
 
