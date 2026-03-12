@@ -9,9 +9,10 @@ pthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER;
 pthread_cond_t cond = PTHREAD_COND_INITIALIZER;
 
 
-void callback(char receive_ch) 
+void callback() 
 {
-    printf("受信した文字: %c\n", receive_ch);
+    data_flag = 1;
+    pthread_cond_signal(&cond);
 }
 
 
@@ -33,11 +34,8 @@ void* key_watch(void *arg)
             pthread_mutex_unlock(&mutex);
             break;
         }
-
-        data_flag = 1;
-        pthread_cond_signal(&cond); 
+        callback();
         pthread_mutex_unlock(&mutex);
-
     }
     return NULL;
 }
@@ -45,7 +43,6 @@ void* key_watch(void *arg)
 int main(void) 
 {
     pthread_t th;
-    void (*receive_callback)(char) = callback;
     pthread_create(&th, NULL, key_watch, NULL); 
 
     while (1) 
@@ -56,18 +53,15 @@ int main(void)
         {
             pthread_cond_wait(&cond, &mutex);
         }
-
         if (exit_flag == 1)
         {
             pthread_mutex_unlock(&mutex);
             break;
         }
-        
-        if (callback != NULL) 
+        if (data_flag != 0) 
         {
-            receive_callback(input_ch);
+            printf("受信した文字：%c\n",input_ch);
         }
-
         data_flag = 0;
         pthread_mutex_unlock(&mutex);
     }
