@@ -6,16 +6,9 @@ class Counter
 private:
     int num;
 public:
-    Counter();
-public:
     int Getter();
     void Setter(const int value);
 };
-
-Counter::Counter()
-{
-    num = 0;
-}
 
 int Counter::Getter()
 {
