@@ -1,26 +1,26 @@
 #include <iostream>
 using namespace std;
 
-class dummy
+class test
 {
 private:
     int num_;
 public:
-    dummy();
+    test();
 public:
     void show();
 };
 
-dummy::dummy(): num_(100){};
+test::test(): num_(100){};
 
-void dummy::show()
+void test::show()
 {
     cout << num_ << "で初期化しました。" << endl;
 }
 
 int main(void)
 {
-    dummy Dummy;
-    Dummy.show();
+    test Test;
+    Test.show();
     return 0;
 }
