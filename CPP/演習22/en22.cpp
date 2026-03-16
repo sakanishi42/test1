@@ -1,44 +1,44 @@
 #include <iostream>
 using namespace std;
 
-class dummy
+class test
 {
 private:
     int* data_;
 public:
-    dummy(int value);
-    dummy(const dummy& other);
-    ~dummy();
+    test(int value);
+    test(const test& other);
+    ~test();
 public:
     void show();
 };
 
-dummy::dummy(int num)
+test::test(int num)
 {
     data_ = new int(num);
 }
 
-dummy::dummy(const dummy& other)
+test::test(const test& other)
 {
     data_ = new int(*other.data_);
     cout << "コピー！" << endl;
 }
 
-dummy::~dummy() 
+test::~test() 
 {
     delete data_;
 }
 
-void dummy::show()
+void test::show()
 {
     cout << "値 " << *data_  << "   アドレス " << data_ << endl;
 }
 
 int main(void)
 {
-    dummy Dummy1(30);
-    dummy Dummy2 = Dummy1;
-    Dummy1.show();
-    Dummy2.show();
+    test test1(30);
+    test test2 = test1;
+    test1.show();
+    test2.show();
     return 0;
 }
