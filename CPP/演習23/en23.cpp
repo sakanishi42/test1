@@ -1,41 +1,40 @@
 #include <iostream>
 using namespace std;
 
-class Counter
+class test
 {
 private:
     int num_;
 public:
-    Counter();
+    test();
 public:
-    int Getter();
+    int Getter() const;
     void Setter(const int value);
-    void show();
+    void show() const;
 };
 
-Counter::Counter():num_(100){};
+test::test():num_(100){};
 
 
-int Counter::Getter()
+int test::Getter() const
 {
+    show();
     return num_;
 }
 
-void Counter::Setter(const int num)
+void test::Setter(const int num)
 {
     num_ = num;
-    show();
 }
 
-void dummy::show()
+void test::show() const
 {
-    cout << num_ << "で初期化しました。" << endl;
+    cout << num_ << "という値が入っています。。" << endl;
 }
 
 int main(void)
 {
-    Counter counter1; 
-    counter1.Setter(100);  
-    cout << counter1.Getter() <<  endl; 
+    const test const_test; 
+    const_test.Getter();
     return 0;
 }
