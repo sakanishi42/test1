@@ -1,20 +1,20 @@
 #include <iostream>
 using namespace std;
 
-struct dammy 
+struct dummy 
 {
     char name[20];
     int age;
 };
 
-void Print(const dammy& arg) 
+void Print(const dummy& arg) 
 {
     cout << "氏名: " << arg.name << "| 年齢: " << arg.age << endl;
 }
 
 int main() 
 {
-    dammy Dammy = {"山田太郎", 20};
-    Print(Dammy);
+    dummy Dummy = {"山田太郎", 20};
+    Print(Dummy);
     return 0;
 }

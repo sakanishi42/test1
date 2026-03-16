@@ -14,7 +14,7 @@ int main(void)
 
 void swap(int& num1,int& num2)
 {
-    int dammy = num1;
+    int dummy = num1;
     num1 = num2;
-    num2 = dammy;
+    num2 = dummy;
 }

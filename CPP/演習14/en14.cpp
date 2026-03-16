@@ -14,7 +14,7 @@ public:
 
 Counter::Counter()
 {
-
+    num = 0;
 }
 
 int Counter::Getter()
