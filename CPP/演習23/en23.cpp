@@ -29,7 +29,7 @@ void test::Setter(const int num)
 
 void test::show() const
 {
-    cout << num_ << "という値が入っています。。" << endl;
+    cout << num_ << "という値が入っています。" << endl;
 }
 
 int main(void)
