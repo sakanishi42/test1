@@ -2,6 +2,7 @@
 #include <string>
 using namespace std;
 
+//親クラス---------------
 class Animal
 {
 protected:
@@ -13,7 +14,9 @@ public:
 };
 
 Animal::Animal(string name, int age) : name_(name), age_(age) {}
+//----------------------
 
+//子クラス---------------
 class Dog: public Animal
 {
 public:
@@ -26,8 +29,8 @@ Dog::Dog(string name, int age) : Animal(name, age) {}
 void Dog::show()
 {
     cout << "名前:" << name_ << " |年齢:" << age_ << "歳" << endl;
-    cout << "呼ばれたのはDogクラスです" << endl;
 }
+//----------------------
 
 int main(void)
 {
