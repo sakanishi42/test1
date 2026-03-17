@@ -8,16 +8,10 @@ private:
 public:
     comparison(int num);
 public:
-    int Getter() const;
     bool operator ==(const comparison& rother) const;
 };
 
 comparison::comparison(int num):num_(num){};
-
-int comparison::Getter() const
-{
-    return num_;
-}
 
 bool comparison::operator ==(const comparison& rother) const
 {
