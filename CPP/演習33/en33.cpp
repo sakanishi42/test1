@@ -9,17 +9,17 @@ protected:
     string name_;
     int age_;
 public:
-    Animal();
-    virtual void show();
-    virtual ~Animal() {}
+    Animal(string name, int age);
+    virtual void show() = 0;
+    //~Animal();
+    virtual ~Animal();
 };
 
-Animal::Animal() : name_(""), age_(0) {}
+Animal::Animal(string name, int age) : name_(name), age_(age) {}
 
-void Animal::show()
+Animal::~Animal()
 {
-    cout << "名前:" << name_ << " |年齢:" << age_ << "歳" << endl;
-    cout << "呼ばれたのはAnimalクラスです" << endl;
+    cout << "Animal側のデストラクタが呼び出されました。" << endl;
 }
 //----------------------
 
@@ -29,18 +29,20 @@ class Dog: public Animal
 public:
     Dog(string name, int age);
     virtual void show();
+    //~Dog();
+    virtual ~Dog();
 };
 
-Dog::Dog(string name,int age)
+Dog::Dog(string name, int age) : Animal(name, age) {}
+
+Dog::~Dog()
 {
-    name_ = name;
-    age_ = age;
+    cout << "Dog側のデストラクタが呼び出されました" << endl;
 }
 
 void Dog::show()
 {
     cout << "名前:" << name_ << " |年齢:" << age_ << "歳" << endl;
-    cout << "呼ばれたのはDogクラスです" << endl;
 }
 //----------------------
 
