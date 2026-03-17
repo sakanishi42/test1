@@ -10,6 +10,7 @@ protected:
     int age_;
 public:
     Animal(string name, int age);
+public:
     virtual void show() = 0;
 };
 
@@ -21,6 +22,7 @@ class Dog: public Animal
 {
 public:
     Dog(string name, int age);
+public:
     virtual void show();
 };
 

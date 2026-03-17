@@ -10,9 +10,9 @@ protected:
     int age_;
 public:
     Animal(string name, int age);
-    virtual void show() = 0;
-    //~Animal();
     virtual ~Animal();
+public:
+    virtual void show() = 0;
 };
 
 Animal::Animal(string name, int age) : name_(name), age_(age) {}
@@ -23,14 +23,14 @@ Animal::~Animal()
 }
 //----------------------
 
-//子クラス---------------
+//子クラス1---------------
 class Dog: public Animal
 {
 public:
     Dog(string name, int age);
-    virtual void show();
-    //~Dog();
     virtual ~Dog();
+public:
+    virtual void show();
 };
 
 Dog::Dog(string name, int age) : Animal(name, age) {}
