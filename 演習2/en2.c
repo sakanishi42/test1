@@ -28,7 +28,7 @@ int main (void)
         if(data1 > 0)
         {
             printf("正の整数\n");
-            i = data1;
+            
         }
         else
         {
