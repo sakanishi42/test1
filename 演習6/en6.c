@@ -11,21 +11,21 @@ int main(void)
          {
             break;
          }
-         printf("%d　",i);
+         printf("%d　",num1);
          num2 = num1 + num3;
 
          if(num2 > 1000)
          {
             break;
          }
-         printf("%d　",j);
+         printf("%d　",num2);
          num3 = num1 + num2;
          
          if(num3 > 1000)
          {
             break;
          }
-         printf("%d　",k);
+         printf("%d　",num3);
          num1 = num2 + num3;
     }
 
