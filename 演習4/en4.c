@@ -16,8 +16,15 @@ int main(void)
         i++;
     }
 
-    sum = sum / i;
-    printf("%lf" ,sum);
+    if(i == 0)
+    {
+        printf("数字が入力されませんでした\n");
+    }
+    else
+    {
+        sum = sum / i;
+        printf("平均値は%lfです\n" ,sum);
+    }
     
     return 0;
 }
